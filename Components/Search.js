@@ -1,13 +1,22 @@
 import React from 'react'
+import Movies from '../Helpers/MoviesData.js'
 
-import {StyleSheet, View, Button, TextInput} from 'react-native'
+import { FlatList, Text, StyleSheet, View, Button, TextInput} from 'react-native'
+
+
 
 class Search extends React.Component {
   render() {
     return (
-      <View style={styles.view}>
+      <View style={styles.main_container}>
         <TextInput style={styles.textinput} placeholder="Titre du film" />
         <Button title="Rechercher" onPress={() => {}} />
+
+        <FlatList
+          data = {Movies}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem= {({item}) => <Text>{item.title}</Text>}
+        />
       </View>
       )
     }
@@ -23,9 +32,12 @@ class Search extends React.Component {
       paddingLeft: 5,
       marginBottom: 20
     },
-    view :{
-      marginTop: 30
+    main_container :{
+      marginTop: 30,
+      flex: 1
     },
   })
-export default Search
+
+
+export default Search;
 
